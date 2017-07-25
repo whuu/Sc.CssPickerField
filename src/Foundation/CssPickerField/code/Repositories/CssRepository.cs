@@ -8,7 +8,7 @@ using ExCSS;
 
 namespace SmartSitecore.CssPickerField.Repositories
 {
-    public class CssRepository
+    public class CssRepository : ICssRepository
     {
         public CssPickerSettings GetSettings()
         {

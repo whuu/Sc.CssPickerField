@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 		src\Foundation\CssPickerField\code\App_Config\Include\CssPickerField\SmartSitecore.CssPicker.DevSettings.config = src\Foundation\CssPickerField\code\App_Config\Include\CssPickerField\SmartSitecore.CssPicker.DevSettings.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSitecore.CssPickerField.Tests", "src\Foundation\CssPickerField\tests\SmartSitecore.CssPickerField.Tests.csproj", "{37AF6189-E0B4-4B89-8733-66A4D078F9CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{05E67A67-EA7C-48EF-A03A-49FC00BA7485}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05E67A67-EA7C-48EF-A03A-49FC00BA7485}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05E67A67-EA7C-48EF-A03A-49FC00BA7485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -33,5 +39,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7F4FDB2E-0884-4D6F-AC7D-3A631B37F9B5} = {3146197A-F400-46A8-AED9-B3E3AB70950C}
 		{05E67A67-EA7C-48EF-A03A-49FC00BA7485} = {7F4FDB2E-0884-4D6F-AC7D-3A631B37F9B5}
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE} = {7F4FDB2E-0884-4D6F-AC7D-3A631B37F9B5}
 	EndGlobalSection
 EndGlobal

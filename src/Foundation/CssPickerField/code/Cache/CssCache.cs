@@ -7,9 +7,9 @@ namespace SmartSitecore.CssPickerField.Cache
 {
     public class CssCache : CustomCache
     {
-        private CssRepository _repository;
+        private ICssRepository _repository;
 
-        public CssCache(long maxSize, CssRepository repository) : base("SmartSitecore.CssCache", maxSize)
+        public CssCache(long maxSize, ICssRepository repository) : base("SmartSitecore.CssCache", maxSize)
         {
             _repository = repository;
         }

@@ -1,5 +1,4 @@
 ﻿using SmartSitecore.CssPickerField.Repositories;
-using SmartSitecore.CssPickerField.Models;
 
 namespace SmartSitecore.CssPickerField.Cache
 {

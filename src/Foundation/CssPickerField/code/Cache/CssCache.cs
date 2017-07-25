@@ -1,37 +1,40 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Sitecore.Caching;
 using SmartSitecore.CssPickerField.Repositories;
+using SmartSitecore.CssPickerField.Models;
 
 namespace SmartSitecore.CssPickerField.Cache
 {
-    public class CssCache : CustomCache
+    public class CssCache
     {
         private ICssRepository _repository;
 
-        public CssCache(long maxSize, ICssRepository repository) : base("SmartSitecore.CssCache", maxSize)
+        private Sitecore.Caching.Cache _cache;
+
+        private string _cacheKey = "css.list";
+
+        public CssCache(long maxSize, ICssRepository repository)
         {
             _repository = repository;
+            _cache = new Sitecore.Caching.Cache("cache css", maxSize);
         }
 
-        public IEnumerable<string> Get(string key)
+        public IEnumerable<string> Get(string phrase)
         {
-            if (InnerCache.Count == 0)
-            {
-                Set();
-            }
-            var keys = InnerCache.GetCacheKeys().Where(s => s.ToLower().Contains(key.ToLower()));
-            keys = keys.OrderBy(q => q).ToList();
-            return keys;
+            var cacheable = _cache.GetValue(_cacheKey) as CacheableList;
+            if (cacheable == null)
+                cacheable = Set();
+            var keys = cacheable.Words.Where(s => s.ToLower().Contains(phrase.ToLower()));
+            return keys.OrderBy(q => q).ToList();
         }
 
-        private void Set()
+        private CacheableList Set()
         {
             var styles = _repository.GetStyles();
-            foreach (var style in styles)
-            {
-                SetString(style, style);
-            }
+            var cacheable = new CacheableList();
+            cacheable.Words = styles.ToList();
+            _cache.Add(_cacheKey, cacheable);
+            return cacheable;
         }
     }
 }

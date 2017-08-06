@@ -9,7 +9,8 @@ Sitecore Single-line Text Field with Css classes autocompletion. Based on [Sc.Au
 
 ![Css picker field datasource](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-with-datasource.PNG)
 
-* Paths entered in field's data source replace the one defined in configuration file. 
+* Paths entered in field's data source replace the one defined in configuration file.
+* Css names are cached in Sitecore Cache, where the keys are file names. To clear it go to /sitecore/cache.aspx page.
 * Go to the item based on the template and start writing css class name, Css classses appears in a suggestions list and can be picked:
 
 ![Css picker field](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-field.png)

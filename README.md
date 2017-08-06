@@ -9,6 +9,7 @@ Sitecore Single-line Text Field with Css classes autocompletion. Based on [Sc.Au
 ![Css picker field datasource](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-with-datasource.png)
 * Paths entered in field's data source replace the one defined in configuration file. 
 * Go to the item based on the template and start writing css class name, Css classses appears in a suggestions list and can be picked:
+
 ![Css picker field](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-field.png)
 
 Css Picker can be used also on component's rendering parameters to improve content editors experience:
@@ -18,7 +19,9 @@ Open properties of your component in content or experience editor and start writ
 ![Css picker field](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-in-rendering-params.PNG.png)
 * Use rendering parameters in code:
 * In  standard Sitecore MVC controller:
+
   `var selectedCss = RenderingContext.Current.Rendering.Parameters["Css Class"];`
 *In Glass Mapper MVC (where MyParameters is a Model class for corresponding template):
+
   `var selectedCss = GetRenderingParameters<MyParameters>().Css_Class;`
 

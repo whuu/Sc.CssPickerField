@@ -16,15 +16,25 @@ namespace SmartSitecore.CssPickerField.Repositories
             return settings;
         }
 
-        public IEnumerable<string> GetStyles()
+        public IEnumerable<string> GetStyles(string[] paths)
         {
             var styles = new List<string>();
             try
             {
-                var settings = GetSettings();
-                foreach (var path in settings.Paths)
+                if (paths == null || paths.Count() == 0)
                 {
-                    styles.AddRange(GetStylesFromFile(path));
+                    var settings = GetSettings();
+                    foreach (var path in settings.Paths)
+                    {
+                        styles.AddRange(GetStylesFromFile(path));
+                    }
+                }
+                else
+                {
+                    foreach (var path in paths)
+                    {
+                        styles.AddRange(GetStylesFromFile(path));
+                    }
                 }
             }
             catch (Exception ex)
@@ -34,7 +44,7 @@ namespace SmartSitecore.CssPickerField.Repositories
             return styles;
         }
 
-        private IEnumerable<string> GetStylesFromFile(string path)
+        protected virtual IEnumerable<string> GetStylesFromFile(string path)
         {
             var file = File.ReadAllText(HttpContext.Current.Server.MapPath(path));
             var parser = new Parser();

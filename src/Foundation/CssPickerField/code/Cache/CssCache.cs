@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Sitecore.Caching;
 using SmartSitecore.CssPickerField.Repositories;
 using SmartSitecore.CssPickerField.Models;
 
@@ -13,28 +14,44 @@ namespace SmartSitecore.CssPickerField.Cache
 
         private string _cacheKey = "css.list";
 
-        public CssCache(long maxSize, ICssRepository repository)
-        {
-            _repository = repository;
-            _cache = new Sitecore.Caching.Cache("cache css", maxSize);
+        private string _name;
+
+        public string Name { get
+            {
+                return _name;
+            }
         }
 
-        public IEnumerable<string> Get(string phrase)
+        public CssCache(string name, long maxSize, ICssRepository repository)
+        {
+            _repository = repository;
+            _name = name;
+            _cache = new Sitecore.Caching.Cache(name, maxSize);
+        }
+
+        public IEnumerable<string> Get(string key)
         {
             var cacheable = _cache.GetValue(_cacheKey) as CacheableList;
             if (cacheable == null)
-                cacheable = Set();
-            var keys = cacheable.Words.Where(s => s.ToLower().Contains(phrase.ToLower()));
+            {
+                return new List<string>();
+            }
+            var keys = cacheable.Words.Where(s => s.ToLower().Contains(key.ToLower()));
             return keys.OrderBy(q => q).ToList();
         }
 
-        private CacheableList Set()
+        public void Set(string[] paths = null)
         {
-            var styles = _repository.GetStyles();
-            var cacheable = new CacheableList();
-            cacheable.Words = styles.ToList();
-            _cache.Add(_cacheKey, cacheable);
-            return cacheable;
+            var cacheable = _cache.GetValue(_cacheKey) as CacheableList;
+            if (cacheable == null)
+            {
+                var styles = _repository.GetStyles(paths);
+                cacheable = new CacheableList()
+                {
+                    Words = styles.ToList()
+                };
+                _cache.Add(_cacheKey, cacheable);
+            }
         }
     }
 }

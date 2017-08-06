@@ -18,6 +18,11 @@ namespace SmartSitecore.CssPickerField.Models
 
         public event DataLengthChangedDelegate DataLengthChanged;
 
+        public CacheableList()
+        {
+            Cacheable = true;
+        }
+
         long ICacheable.GetDataLength()
         {
             System.IO.MemoryStream mem = new System.IO.MemoryStream();

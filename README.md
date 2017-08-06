@@ -21,7 +21,7 @@ Open properties of your component in content or experience editor and start writ
 * In  standard Sitecore MVC controller:
 
   `var selectedCss = RenderingContext.Current.Rendering.Parameters["Css Class"];`
-*In Glass Mapper MVC (where MyParameters is a Model class for corresponding template):
+* In Glass Mapper MVC (where MyParameters is a Model class for corresponding template):
 
   `var selectedCss = GetRenderingParameters<MyParameters>().Css_Class;`
 

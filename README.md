@@ -7,7 +7,8 @@ Sitecore Single-line Text Field with Css classes autocompletion. Based on [Sc.Au
 * Replace paths to css files in `/App_Config/Include/CssPickerField/SmartSitecore.CssPicker.config` or use Sitecore patch to add your css files. 
 * Alternatively add `styles=` in field data source with paths to css files, separated with comma:
 
-![Css picker field datasource](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-with-datasource.png)
+![Css picker field datasource](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-with-datasource.PNG)
+
 * Paths entered in field's data source replace the one defined in configuration file. 
 * Go to the item based on the template and start writing css class name, Css classses appears in a suggestions list and can be picked:
 
@@ -18,7 +19,7 @@ Css Picker can be used also on component's rendering parameters to improve conte
 Select `_CssPicker`, or your custom template in Parameters Template field of the rendering definition item.
 Open properties of your component in content or experience editor and start writing css class name:
 
-![Css picker field](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-in-rendering-params.PNG.png)
+![Css picker field](https://raw.githubusercontent.com/whuu/Sc.CssPickerField/master/img/css-picker-in-rendering-params.PNG)
 * Use rendering parameters in standard Sitecore MVC controller:
 
   `var selectedCss = RenderingContext.Current.Rendering.Parameters["Css Class"];`

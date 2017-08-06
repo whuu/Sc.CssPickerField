@@ -14,9 +14,9 @@ namespace SmartSitecore.CssPickerField.Tests.Cache
         {
             var repository = Substitute.For<ICssRepository>();
             var css = new List<string> { "t", "test", "te",  "include-test" };
-            repository.GetStyles().Returns(css);
+            repository.GetStyles(null).Returns(css);
 
-            var cache = new CssCache(1048576, repository);
+            var cache = new CssCache("css-test", 1048576, repository);
             cache.Get("test").Should().BeInAscendingOrder("test", "test-include");
         }
 
@@ -25,9 +25,9 @@ namespace SmartSitecore.CssPickerField.Tests.Cache
         {
             var repository = Substitute.For<ICssRepository>();
             var css = new List<string> { };
-            repository.GetStyles().Returns(css);
+            repository.GetStyles(null).Returns(css);
 
-            var cache = new CssCache(1048576, repository);
+            var cache = new CssCache("css-test", 1048576, repository);
             cache.Get("test").Should().BeEmpty();
         }
 
@@ -36,9 +36,9 @@ namespace SmartSitecore.CssPickerField.Tests.Cache
         {
             var repository = Substitute.For<ICssRepository>();
             var css = new List<string> { "t", "betested", "te" };
-            repository.GetStyles().Returns(css);
+            repository.GetStyles(null).Returns(css);
 
-            var cache = new CssCache(1048576, repository);
+            var cache = new CssCache("css-test", 1048576, repository);
             cache.Get("test").Should().BeInAscendingOrder("test", "betested");
         }
     }

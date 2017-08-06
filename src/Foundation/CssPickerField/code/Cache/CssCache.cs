@@ -9,28 +9,27 @@ namespace SmartSitecore.CssPickerField.Cache
     {
         private ICssRepository _repository;
 
-        public CssCache(long maxSize, ICssRepository repository) : base("SmartSitecore.CssCache", maxSize)
+        public CssCache(string name, long maxSize, ICssRepository repository) : base(name, maxSize)
         {
             _repository = repository;
         }
 
         public IEnumerable<string> Get(string key)
         {
-            if (InnerCache.Count == 0)
-            {
-                Set();
-            }
             var keys = InnerCache.GetCacheKeys().Where(s => s.ToLower().Contains(key.ToLower()));
             keys = keys.OrderBy(q => q).ToList();
             return keys;
         }
 
-        private void Set()
+        public void Set(string[] paths = null)
         {
-            var styles = _repository.GetStyles();
-            foreach (var style in styles)
+            if (InnerCache.Count == 0)
             {
-                SetString(style, style);
+                var styles = _repository.GetStyles(paths);
+                foreach (var style in styles)
+                {
+                    SetString(style, style);
+                }
             }
         }
     }

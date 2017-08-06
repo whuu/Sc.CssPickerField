@@ -7,6 +7,6 @@ namespace SmartSitecore.CssPickerField.Repositories
     {
         CssPickerSettings GetSettings();
 
-        IEnumerable<string> GetStyles();
+        IEnumerable<string> GetStyles(string[] paths);
     }
 }

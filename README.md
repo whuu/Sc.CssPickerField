@@ -28,4 +28,6 @@ Open properties of your component in content or experience editor and start writ
 * Use rendering parameters in Glass Mapper MVC (where MyParameters is a Model class for corresponding template):
 
   `var selectedCss = GetRenderingParameters<MyParameters>().Css_Class;`
+  
+  [Detailed description and use case](http://smartsitecore.com/en/autocomplete-single-line-text-css-picker-field/)
 

@@ -29,5 +29,5 @@ Open properties of your component in content or experience editor and start writ
 
   `var selectedCss = GetRenderingParameters<MyParameters>().Css_Class;`
   
-  Check out [blog entry](http://smartsitecore.com/en/autocomplete-single-line-text-css-picker-field/) about the field and it use case 
+  Check out [blog entry](http://smartsitecore.com/en/autocomplete-single-line-text-css-picker-field/) about the field and it use case.
 
